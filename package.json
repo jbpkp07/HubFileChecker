@@ -1,0 +1,42 @@
+{
+    "name": "hub-file-checker",
+    "author": "Jeremy Barnes",
+    "description": "Spafax HUB cloud QC file checker",
+    "version": "1.0.0",
+    "private": true,
+    "main": "./server/build/server.js",
+    "homepage": "https://github.com/jbpkp07/HubFileChecker",
+    "scripts": {
+        "install": "if-env NODE_ENV=production && npm run install-prod || npm run install-dev",
+        "install-prod": "npm run install-server && npm run install-react",
+        "install-dev": "npm run install-server && npm run install-react && npm run install-electron",
+        "install-server": "cd ./server && npm install",
+        "install-react": "cd ./renderer && npm install",
+        "install-electron": "cd ./electron && npm install",
+        "build": "npm run build-server && npm run build-react",
+        "build-server": "cd ./server && npm run build",
+        "build-react": "cd ./renderer && npm run build",
+        "build-dist-electron": "cd ./electron && npm run build && npm run build-dist",
+        "heroku-postbuild": "npm run build",
+        "start": "if-env NODE_ENV=production && npm run start-prod || npm run start-dev",
+        "start-prod": "node ./server/build/server.js",
+        "start-dev": "npm run start-dev-server && npm run start-dev-react && npm run start-dev-electron",
+        "start-dev-server": "cd ./server && npm run start-dev",
+        "start-dev-react": "cd ./renderer && npm run start-dev",
+        "start-dev-electron": "cd ./electron && npm run start-dev"
+    },
+    "dependencies": {
+        "@types/axios": "^0.14.0",
+        "if-env": "^1.0.4"
+    },
+    "devDependencies": {
+        "tslint": "^5.20.1",
+        "tslint-react": "^4.1.0",
+        "typescript": "^3.7.4"
+    },
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jbpkp07/HubFileChecker.git"
+    }
+}
