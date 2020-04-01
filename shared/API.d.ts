@@ -9,7 +9,7 @@ import {
 import { IS3Asset as IS3AssetModel } from "../server/src/db/models/s3Assets";
 
 
-export declare namespace API {
+export declare namespace  API {
 
     interface IApi {
 

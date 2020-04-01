@@ -1,8 +1,8 @@
 import jQuery from "jquery";
 import React from "react";
 
-import { API } from "../../../../shared/API";
 import "./DataTable.css";
+import { ITableKind } from "../DataTableAdaptor/DataTableAdaptor";
 import "./datatables/datatables.css";
 import "../TextBox/TextBox.css";
 
@@ -26,9 +26,9 @@ export interface IDataTableProps {
     pageLength: number;
     positionLeft: string;
     positionTop: string;
-    tableKind: keyof API.ILookupsKind;
+    tableKind: keyof ITableKind;
     wrapperId: string;
-    handleDeleteBtnClick?(tableKind: keyof API.ILookupsKind, _id: string): void;
+    handleDeleteBtnClick?(tableKind: keyof ITableKind, _id: string): void;
 }
 
 export class DataTable extends React.Component<IDataTableProps> {
@@ -38,7 +38,7 @@ export class DataTable extends React.Component<IDataTableProps> {
 
     public static getDeleteBtnElement = (_id: string): string => { 
 
-        return `<div class="${DataTable.deleteBtnClass} button" ${DataTable.dataIdAttribute}="${_id}">Delete</div>`;
+        return `<div class="${DataTable.deleteBtnClass} button" ${DataTable.dataIdAttribute}="${_id}">Play</div>`;
     }
 
     private readonly wrapperClassName: string = "dataTableWrapper";
@@ -226,12 +226,12 @@ export class DataTable extends React.Component<IDataTableProps> {
     }
 
     private readonly handleDeleteBtnClick = (event: JQuery.ClickEvent): void => {
-
+        console.log("here");
         const _id: string = event.target.dataset.id;
 
         if (this.props.handleDeleteBtnClick !== undefined) {
 
-            this.removeAllListeners();
+            // this.removeAllListeners();
 
             this.props.handleDeleteBtnClick(this.props.tableKind, _id);  // Table will be redrawn after server returns updated data
         }

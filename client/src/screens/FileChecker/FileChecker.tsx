@@ -4,7 +4,7 @@ import React from "react";
 import { api } from "../../api/api";
 import { API } from "../../../../shared/API";
 import { getComponentProps, IFileCheckerComponentProps } from "./componentProps";
-import { DataTableAdaptor } from "../../components/DataTableAdaptor/DataTableAdaptor";
+import { DataTableAdaptor, ITableKind } from "../../components/DataTableAdaptor/DataTableAdaptor";
 import "./FileChecker.css";
 
 
@@ -12,12 +12,14 @@ interface IFileCheckerScreenState {
 
     lookups: API.ILookups | null;
     s3Assets: API.IS3Asset[] | null;
+    videoUrl: string | null;
 }
 
 let fileCheckerScreenState: IFileCheckerScreenState = {
 
     lookups: null,
-    s3Assets: null
+    s3Assets: null,
+    videoUrl: null
 };
 
 export class FileCheckerScreen extends React.Component {
@@ -34,7 +36,42 @@ export class FileCheckerScreen extends React.Component {
 
             <div id="fileCheckerScreen">
                 <DataTableAdaptor {...componentProps.dataTableAdaptorProps} />
+                {this.renderVideo()}
             </div>
+        );
+    }
+
+    public readonly renderVideo = (): JSX.Element => {
+
+        if (this.state.videoUrl !== null) {
+
+            const videoStyle: React.CSSProperties = {
+
+                background: "var(--darkest-gray)",
+                border: "1px solid var(--lightest-gray)",
+                borderRadius: "5px",
+                display: "block",
+                marginTop: "20px",
+                padding: "10px"
+            };
+
+            return (
+
+                <video
+                    src={this.state.videoUrl}
+                    height="400"
+                    controls={true}
+                    autoPlay={true}
+                    style={videoStyle}
+                >
+                    Your browser does not support HTML5 video.
+                </video>
+            );
+
+        }
+
+        return (
+            <div />
         );
     }
 
@@ -42,12 +79,12 @@ export class FileCheckerScreen extends React.Component {
 
         const dataFetch: [Promise<API.ILookups>, Promise<API.IS3Asset[]>] = [
 
-            api.getLookups(this.apiCancelToken), 
+            api.getLookups(this.apiCancelToken),
             api.getS3Assets(this.apiCancelToken)
         ];
 
         const data: [API.ILookups, API.IS3Asset[]] = await Promise.all(dataFetch);
-        
+
         this.setState({
 
             lookups: data[0],
@@ -78,15 +115,21 @@ export class FileCheckerScreen extends React.Component {
         this.apiCancelToken.cancel("File Checker Screen");
 
         fileCheckerScreenState = this.state;
+
+        fileCheckerScreenState.videoUrl = null;
     }
 
-    protected readonly handleDataTableDeleteBtnClick = (kind: keyof API.ILookupsKind, _id: string): void => {
+    protected readonly handleDataTableDeleteBtnClick = (_kind: keyof ITableKind, _id: string): void => {
 
-        api.deleteLookupById(kind, _id, this.apiCancelToken)
+        console.log(_id);
 
-            .then((lookups: API.ILookups) => {
+        this.setState({ videoUrl: _id });
 
-                this.setState({ lookups });
-            });
+        // api.deleteLookupById(kind, _id, this.apiCancelToken)
+
+        //     .then((lookups: API.ILookups) => {
+
+        //         this.setState({ lookups });
+        //     });
     }
 }

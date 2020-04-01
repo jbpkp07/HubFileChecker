@@ -62,12 +62,12 @@
 }
 
 #dataTable > tbody > tr > td > .dataTableDeleteBtn {
-    color: var(--light-red);
+    color: var(--light-teal);
     position: initial;
 }
 
 #dataTable > tbody > tr > td > .dataTableDeleteBtn:active {
-    color: var(--light-red-transparent);
+    color: var(--light-teal-transparent);
 }
 
 #dataTable_paginate {
