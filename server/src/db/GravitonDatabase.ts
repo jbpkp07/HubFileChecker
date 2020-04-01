@@ -25,6 +25,7 @@ export class GravitonDatabase {
 
                     // console.log(_connection.connections);
                     // this.addTestLookups();
+                    
                     resolve("Graviton database connected");
                 })
                 .catch((err: string) => {
