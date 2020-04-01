@@ -2,11 +2,12 @@ import mongoose, { ConnectionOptions, Model } from "mongoose";
 
 import { config } from "../config/config";
 import { ILookups, ILookupsDoc, lookupsModel } from "./models/lookups";
-
+import { IS3Asset, IS3AssetDoc, s3AssetsModel } from "./models/s3Assets";
 
 export class GravitonDatabase {
 
     public readonly lookupsModel: Model<ILookupsDoc> = lookupsModel;
+    public readonly s3AssetModel: Model<IS3AssetDoc> = s3AssetsModel;
 
     public async connectDatabase(): Promise<string> {
 
@@ -25,6 +26,7 @@ export class GravitonDatabase {
 
                     // console.log(_connection.connections);
                     // this.addTestLookups();
+                    // this.addTestS3Assets();
                     
                     resolve("Graviton database connected");
                 })
@@ -34,6 +36,30 @@ export class GravitonDatabase {
                 });
         });
     }
+
+    protected addTestS3Assets(): void {
+
+        const newAsset: IS3Asset = {
+
+            client: "client",
+            cycle: "cycle",
+            facilisPath: "facilis path",
+            facilisSize: 123456,
+            fileName: "filename",
+            notes: "a note here",
+            preSignedProxyUrl: "proxy url",
+            preSignedUrl: "url",
+            qcChecked: false
+        };
+
+        this.s3AssetModel.create(newAsset)
+
+            .catch((err: string) => {
+
+                console.log(err);
+            });
+    }
+
 
     protected addTestLookups(): void {
 

@@ -22,13 +22,16 @@ export class Controller {
 
         this.router.route("/api/lookups/:kind/:_id")
             .delete(api.deleteLookupById.bind(this));
+
+        this.router.route("/api/s3Assets")
+            .get(api.getS3Assets.bind(this));
     }
 
     public async connectDatabase(): Promise<string> {
 
         return this.gravitonDatabase.connectDatabase();
     }
-    
+
     protected sendError(response: Response, statusCode: number, clientErr: string, caughtErr?: string): void {
 
         terminal.red(`  ${clientErr}\n\n`);

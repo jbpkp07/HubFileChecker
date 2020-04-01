@@ -50,6 +50,7 @@
     cursor: pointer;
     float: right;
     height: var(--titleBarHeight);
+    width: 144px;
 }
 
 .titleBarBtn  {    

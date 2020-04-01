@@ -6,6 +6,7 @@ import {
     ILookupsKind as ILookupsKindModel,
     ILookupType as ILookupTypeModel
 } from "../server/src/db/models/lookups";
+import { IS3Asset as IS3AssetModel } from "../server/src/db/models/s3Assets";
 
 
 export declare namespace API {
@@ -14,6 +15,7 @@ export declare namespace API {
 
         deleteLookupById(...args: any): void | Promise<ILookups>;
         getLookups(...args: any): void | Promise<ILookups>;
+        getS3Assets(...args: any): void | Promise<IS3Asset[]>;
     }
 
     type ILookupType = ILookupTypeModel;
@@ -22,4 +24,6 @@ export declare namespace API {
     
     type ILookupsKind = ILookupsKindModel;
     type ILookups = ILookupsModel;
+
+    type IS3Asset = IS3AssetModel;
 }

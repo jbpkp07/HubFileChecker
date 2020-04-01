@@ -6,17 +6,18 @@ import { API } from "../../../../shared/API";
 import { getComponentProps, IFileCheckerComponentProps } from "./componentProps";
 import { DataTableAdaptor } from "../../components/DataTableAdaptor/DataTableAdaptor";
 import "./FileChecker.css";
-import { SideBar } from "../../components/SideBar/SideBar";
 
 
 interface IFileCheckerScreenState {
 
     lookups: API.ILookups | null;
+    s3Assets: API.IS3Asset[] | null;
 }
 
 let fileCheckerScreenState: IFileCheckerScreenState = {
 
-    lookups: null
+    lookups: null,
+    s3Assets: null
 };
 
 export class FileCheckerScreen extends React.Component {
@@ -32,20 +33,44 @@ export class FileCheckerScreen extends React.Component {
         return (
 
             <div id="fileCheckerScreen">
-                <SideBar />
                 <DataTableAdaptor {...componentProps.dataTableAdaptorProps} />
             </div>
         );
     }
 
-    public readonly componentDidMount = (): void => {
+    public readonly componentDidMount = async (): Promise<void> => {
 
-        api.getLookups(this.apiCancelToken)
+        const dataFetch: [Promise<API.ILookups>, Promise<API.IS3Asset[]>] = [
 
-            .then((lookups: API.ILookups) => {
+            api.getLookups(this.apiCancelToken), 
+            api.getS3Assets(this.apiCancelToken)
+        ];
 
-                this.setState({ lookups });
-            });
+        const data: [API.ILookups, API.IS3Asset[]] = await Promise.all(dataFetch);
+        
+        this.setState({
+
+            lookups: data[0],
+            s3Assets: data[1]
+        });
+
+        console.log(data[0]);
+        console.log(data[1]);
+
+
+        // api.getLookups(this.apiCancelToken)
+
+        //     .then((lookups: API.ILookups) => {
+
+        //         this.setState({ lookups });
+        //     });
+
+        // api.getS3Assets(this.apiCancelToken)
+
+        //     .then((s3Assets: API.IS3Asset[]) => {
+
+        //         console.log(s3Assets);
+        //     });
     }
 
     public readonly componentWillUnmount = (): void => {

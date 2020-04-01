@@ -3,9 +3,9 @@ import Axios, { AxiosRequestConfig, AxiosResponse, CancelTokenSource } from "axi
 import { API } from "../../../../shared/API";
 
 
-const clientErr: string = "ERROR [api.getLookups()]:  \"Server could not retreive lookups object from graviton database\"";
+const clientErr: string = "ERROR [api.getS3Assets()]:  \"Server could not retreive s3Assets from graviton database\"";
 
-export async function getLookups(cancelToken: CancelTokenSource): Promise<API.ILookups> {
+export async function getS3Assets(cancelToken: CancelTokenSource): Promise<API.IS3Asset[]> {
 
     const config: AxiosRequestConfig = {
 
@@ -14,9 +14,9 @@ export async function getLookups(cancelToken: CancelTokenSource): Promise<API.IL
 
     return new Promise((resolve: Function): void => {
 
-        Axios.get("/api/lookups", config)
+        Axios.get("/api/s3Assets", config)
 
-            .then((response: AxiosResponse<API.ILookups>) => {
+            .then((response: AxiosResponse<API.IS3Asset[]>) => {
 
                 // console.log(response.data);
                 resolve(response.data);
@@ -25,7 +25,7 @@ export async function getLookups(cancelToken: CancelTokenSource): Promise<API.IL
 
                 if (Axios.isCancel(thrown)) {
 
-                    console.log(`api.getLookups() request cancelled: ${thrown.message}`);
+                    console.log(`api.getS3Assets() request cancelled: ${thrown.message}`);
                 }
                 else {
 

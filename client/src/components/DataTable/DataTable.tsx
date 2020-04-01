@@ -4,6 +4,7 @@ import React from "react";
 import { API } from "../../../../shared/API";
 import "./DataTable.css";
 import "./datatables/datatables.css";
+import "../TextBox/TextBox.css";
 
 
 interface IJQuery extends JQueryStatic {
@@ -150,7 +151,8 @@ export class DataTable extends React.Component<IDataTableProps> {
             .addClass("textBox")
             .attr("id", "dataTableTextBox")
             .attr("type", "text")
-            .attr("placeholder", "Search");
+            .attr("placeholder", "Search")
+            .attr("spellcheck", "false");
 
         $(this.searchTextBoxSelector) // Remove search text box default label "Search:"
             .parent()

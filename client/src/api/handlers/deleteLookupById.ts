@@ -17,7 +17,8 @@ export async function deleteLookupById(kind: keyof API.ILookupsKind, _id: string
         Axios.delete(`/api/lookups/${kind}/${_id}`, config)
 
             .then((response: AxiosResponse<API.ILookups>) => {
-                console.log(response.data);
+                
+                // console.log(response.data);
                 resolve(response.data);
             })
             .catch((thrown: any) => {
