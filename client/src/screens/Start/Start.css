@@ -1,0 +1,34 @@
+#startScreen {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+#startScreenBox {
+    animation: startScreenUnBlur 1.25s 0s ease-out;
+    backface-visibility: hidden;
+    height: 480px;
+    margin: auto auto;
+    text-align: center;
+    width: 720px;
+    will-change: filter, opacity;
+}
+
+#startScreenTitle {
+    color: var(--light-purple);
+    font-family: "Roboto-Light";
+    font-size: 42pt;
+    line-height: normal !important;
+}
+
+#startScreenLogo {
+    display: block;
+    margin: 0 auto;
+    width: 460px;
+}
+
+@keyframes startScreenUnBlur {
+
+    from { filter: blur(48px); opacity: 0; }
+    to   { filter: blur(0px); opacity: 1; }
+}

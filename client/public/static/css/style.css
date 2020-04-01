@@ -1,0 +1,141 @@
+:root {
+    --light-white: rgba(248,248,248,1.0);
+    --medium-white: rgba(220,220,220,1.0);
+    --dark-white: rgba(192,192,192,1.0);
+  
+    --lightest-gray: rgba(96,96,96,1.0);
+    --lighter-gray: rgba(72,72,72,1.0);
+    --light-gray: rgba(48,48,48,1.0);
+    --medium-gray: rgba(36,36,36,1.0);
+    --dark-gray: rgba(24,24,24,1.0);
+    --darkest-gray: rgba(12,12,12,1.0);
+
+    --black: rgba(0,0,0,1.0);
+
+    --light-purple: rgba(151,64,250,1.0);
+    --medium-purple: rgba(93,31,153,1.0);
+    --dark-purple: rgba(50,27,99,1.0);
+
+    --light-blue: rgba(0,183,255,1.0);
+    --light-blue-transparent: rgba(0,183,255,0.5);
+
+    --light-teal: rgba(0,225,195,1.0);
+    --light-teal-transparent: rgba(0,225,195,0.5);
+
+    --light-yellow: rgba(209,219,125,1.0);
+    --light-yellow-transparent: rgba(209,219,125,0.5);
+
+    --light-red: rgba(230,80,89,1.0);
+    --light-red-transparent: rgba(230,80,89,0.5);
+
+    --defaultFontSize: 13.333px;
+    --defaultLineHeight: 16px;
+
+    --titleBarHeight: 30px;
+    --navBarHeight: 30px;
+}
+
+@font-face {
+    font-family: "Roboto-Light";
+    src: url("../fonts/Roboto-Light.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Roboto-Regular";
+    src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+}
+
+* {
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    user-select: none;
+    -webkit-app-region: none;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+}
+ 
+::-webkit-scrollbar-track {
+    background: var(--darkest-gray);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--lighter-gray);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--lightest-gray);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--lightest-gray);
+}
+
+html, body {
+    background: var(--dark-gray);
+    color: var(--dark-white);
+    cursor: default;
+    font-family: "Roboto-Regular" !important;
+    font-size: var(--defaultFontSize) !important;
+    height: 100%;
+    line-height: var(--defaultLineHeight) !important;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+input {
+    font-family: "Roboto-Regular" !important;
+    font-size: var(--defaultFontSize) !important;
+    line-height: var(--defaultLineHeight) !important;
+}
+
+#root {
+    height: inherit;
+    width: inherit;
+}
+
+
+
+
+
+
+.textBox, .textBoxInactive {
+    background: var(--darkest-gray);
+    border: 1px solid var(--lightest-gray);
+    border-radius: 5px;
+    font-family: "Roboto-Regular";
+    margin: 0;
+    padding: 5px 8px 7px 8px;
+    position: sticky;
+    width: 100%;
+}
+
+.textBox {
+    color: var(--light-teal);
+    cursor: text;
+}
+
+.textBox::placeholder {
+    color: var(--light-blue-transparent);
+}
+
+.textBoxInactive::placeholder {
+    color: var(--lightest-gray);
+}
+
+.textBox::selection {
+    background-color: var(--light-teal);
+    color: var(--black);
+}
+
+.textBox:focus {
+    border: 1px solid var(--light-teal-transparent);
+}
+
+.textBox:focus::placeholder {
+    color: var(--light-teal-transparent);
+}

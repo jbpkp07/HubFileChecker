@@ -1,0 +1,70 @@
+:root {
+    --titleBarFontSize: 18px;
+    --titleBarLineHeight: 18px;
+    --titleBarLogoWidth: 180px;
+    --titleBarBtnWidth: 48px;
+}
+
+.titleBarDrag {
+    -webkit-app-region: drag;
+}
+
+#titleBar {
+    background: var(--medium-purple);
+    color: var(--light-white);
+    font-family: "Roboto-Light";
+    height: var(--titleBarHeight);
+    line-height: var(--titleBarLineHeight) !important;
+    text-align: center;
+}
+
+#titleBarLogo {
+    background: var(--dark-purple);
+    background: linear-gradient(to right, var(--dark-purple) 50%, var(--medium-purple));
+    float: left;
+    height: var(--titleBarHeight);
+    text-align: left;
+    width: var(--titleBarLogoWidth);
+}
+
+#titleBarLogoText {
+    left: 20px;
+    position: relative;
+}
+
+#titleBarTitle {
+    display: inline-block;
+    height: var(--titleBarHeight);
+    position: relative;
+    left: calc((var(--titleBarBtnWidth) * 3 - var(--titleBarLogoWidth)) / 2);
+}
+
+.titleBarText {
+    font-size: var(--titleBarFontSize) !important;
+    letter-spacing: -.5px;
+    position: relative;
+    top: calc(((var(--titleBarHeight) - var(--titleBarFontSize)) / 2) - 1px);
+}
+
+#titleBarBtnsBox {
+    cursor: pointer;
+    float: right;
+    height: var(--titleBarHeight);
+}
+
+.titleBarBtn  {    
+    background: var(--medium-purple);
+    display: inline-block;
+    height: var(--titleBarHeight);
+    padding-bottom: 7px;
+    padding-top: 7px;
+    width: var(--titleBarBtnWidth);
+}
+
+.titleBarBtn:hover {
+    background: var(--dark-purple);
+}
+
+#titleBarBtnsBox > :last-child:hover {  /* Close button */
+    background: var(--light-red);
+}

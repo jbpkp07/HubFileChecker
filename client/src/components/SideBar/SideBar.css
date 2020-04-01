@@ -1,0 +1,8 @@
+#sideBar {
+    background: var(--medium-gray);
+    border: 1px solid var(--lightest-gray);
+    border-radius: 5px;
+    height: calc(100% - 100px);
+    position: absolute;
+    width: 180px;
+}

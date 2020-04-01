@@ -1,0 +1,34 @@
+#navBar {
+    background: var(--medium-gray);
+    border-bottom: 1px solid var(--lightest-gray);
+    display: flex;
+    height: var(--navBarHeight);
+}
+
+.navBarLink {
+    background: var(--medium-gray);
+    border: none;
+    border-radius: 0px;
+    border-right: 1px solid var(--lightest-gray);
+    color: var(--light-blue);
+    height: var(--navBarHeight);
+    padding: 6px 20px 7px 20px;
+    position: relative;
+}
+
+.navBarActiveLink {
+    background: var(--dark-gray);
+    border-bottom: 1px solid var(--dark-gray);
+}
+
+.navBarInActiveLink {
+    border-bottom: 1px solid var(--lightest-gray);
+}
+
+.navBarInActiveLink:hover {
+    background: var(--light-gray);
+}
+
+.navBarInActiveLink:active {
+    background: var(--light-gray);
+}

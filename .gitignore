@@ -1,16 +1,11 @@
 # dependencies
 /node_modules
-/electron/node_modules
-/renderer/node_modules
+/client/node_modules
 /server/node_modules
 
 # production
-/electron/build
-/renderer/build
+/client/build
 /server/build
-
-# dist
-/electron/dist
 
 # misc
 /.vscode

@@ -1,0 +1,36 @@
+.textBox, .textBoxInactive {
+    background: var(--darkest-gray);
+    border: 1px solid var(--lightest-gray);
+    border-radius: 5px;
+    font-family: "Roboto-Regular";
+    margin: 0;
+    padding: 5px 8px 7px 8px;
+    position: sticky;
+    width: 100%;
+}
+
+.textBox {
+    color: var(--light-teal);
+    cursor: text;
+}
+
+.textBox::placeholder {
+    color: var(--light-blue-transparent);
+}
+
+.textBoxInactive::placeholder {
+    color: var(--lightest-gray);
+}
+
+.textBox::selection {
+    background-color: var(--light-teal);
+    color: var(--black);
+}
+
+.textBox:focus {
+    border: 1px solid var(--light-teal-transparent);
+}
+
+.textBox:focus::placeholder {
+    color: var(--light-teal-transparent);
+}

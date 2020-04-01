@@ -1,0 +1,171 @@
+div.dropDown {
+    display: inline-block;
+    height: 30px;
+    margin: 0;
+    position: absolute;
+    white-space: nowrap;
+}
+
+/* dropDown__control ------------------------------------------------------------------------------ */
+div.dropDown__control {
+    background: linear-gradient(to bottom, var(--light-gray), var(--darkest-gray));
+    border: 1px solid var(--lightest-gray);
+    border-radius: 5px;
+    box-shadow: none;
+    cursor: pointer;
+    height: 30px;
+    min-height: 30px;
+}
+
+div.dropDown__control:hover {
+    background: var(--medium-gray);
+    border: 1px solid var(--lightest-gray);
+    transition: none;
+}
+
+div.dropDown__control--menu-is-open {
+    background: var(--darkest-gray) !important;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+/* dropDown__value-container ---------------------------------------------------------------------- */
+div.dropDown__value-container {
+    color: var(--light-blue);
+    height: 30px;
+    padding: 7px 8px 7px 8px;
+}
+
+div.dropDown__value-container > div {
+    height: 16px;
+    margin: 0;
+    max-width: calc(100% - 8px);
+    min-width: calc(100% - 8px);
+    padding: 0;
+    position: absolute;
+    top: 12px;
+    transform: matrix(1, 0, 0, 1, 0, -7);
+}
+
+div.dropDown__input {
+    color: var(--light-teal);
+    display: block !important;
+    height: 16px;
+    position: absolute !important;
+    width: 100%;
+}
+
+div.dropDown__input > input, div.dropDown__input > div {
+    box-sizing: border-box !important;
+    display: block !important;
+    height: 16px !important;
+    position: absolute !important;
+}
+
+div.dropDown__input > input::selection, div.dropDown__input > div::selection {
+    background-color: var(--light-teal);
+    color: var(--black);
+}
+
+div.dropDown__placeholder {
+    color: var(--light-blue-transparent);
+    height: 16px;
+    margin: 0;
+    max-width: calc(100% - 8px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+div.dropDown__single-value {
+    color: var(--light-teal);
+    height: 16px;
+    margin: 0;
+}
+
+/* dropDown__indicators --------------------------------------------------------------------------- */
+div.dropDown__indicators {
+    height: 30px;
+}
+
+span.dropDown__indicator-separator {
+    background: var(--lightest-gray);
+    height: 20px;
+    margin: 4px 0px 6px 0px;
+    width: 1px;
+}
+
+div.dropDown__indicator {
+    color: var(--light-blue);
+    height: 30px;
+    padding: 3px 4px 5px 4px;
+    transition: none;
+    width: 30px;
+}
+
+div.dropDown__indicator.dropDown__clear-indicator {
+    color: var(--light-blue-transparent);
+}
+
+div.dropDown__indicator:hover {
+    color: var(--light-blue);
+}
+
+div.dropDown__indicator:active {
+    color: var(--light-blue-transparent);
+}
+
+/* dropDown__menu --------------------------------------------------------------------------------- */
+div.dropDown__menu {
+    background: var(--medium-gray);
+    border-bottom: 1px solid var(--lightest-gray);
+    border-left: 1px solid var(--lightest-gray);
+    border-right: 1px solid var(--lightest-gray);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-shadow: 0 3px 3px var(--black);
+    margin: 0;
+    max-height: 330px;
+    padding: 1px;
+}
+
+div.dropDown__menu-list {
+    max-height: 330px;
+}
+
+div.dropDown__menu-list::-webkit-scrollbar-track {
+    border-bottom-right-radius: 2px;
+    margin-bottom: 4px;
+}
+
+div.dropDown__menu-list::-webkit-scrollbar-thumb {
+    border-bottom-right-radius: 2px;
+}
+
+div.dropDown__menu-list > div:not(.dropDown__option) {
+    color: var(--dark-white);
+}
+
+div.dropDown__option {
+    background: transparent;
+    color: var(--light-blue);
+    cursor: pointer;
+    padding-left: 8px;
+    padding-right: 8px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+div.dropDown__option:hover {
+    background: var(--light-gray);
+}
+
+div.dropDown__option:active {
+    background: var(--light-gray);
+    color: var(--light-blue-transparent);
+}
+
+div.dropDown__option.dropDown__option--is-selected {
+    color: var(--light-teal);
+}

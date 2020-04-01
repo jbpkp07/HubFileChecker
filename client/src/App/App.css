@@ -1,0 +1,10 @@
+#app {
+    height: inherit;
+    width: inherit;
+}
+
+#appScreenWrapper {
+    height: calc(100% - var(--titleBarHeight) - var(--navBarHeight));
+    padding: 20px;
+    width: inherit;
+}
