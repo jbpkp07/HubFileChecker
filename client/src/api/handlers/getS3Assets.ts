@@ -18,7 +18,7 @@ export async function getS3Assets(cancelToken: CancelTokenSource): Promise<API.I
 
             .then((response: AxiosResponse<API.IS3Asset[]>) => {
 
-                // console.log(response.data);
+                console.log(response.data);
                 resolve(response.data);
             })
             .catch((thrown: any) => {
