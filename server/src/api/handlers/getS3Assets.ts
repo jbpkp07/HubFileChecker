@@ -11,12 +11,10 @@ export function getS3Assets(this: Controller, _request: Request, response: Respo
     console.log(_request.ip);
 
 
-    // const ip: string = _request.headers["x-forwarded-for"] || 
-    // req.connection.remoteAddress || 
-    // req.socket.remoteAddress ||
-    // (req.connection.socket ? req.connection.socket.remoteAddress : null);
-
-
+    const ip: string | string[] | undefined = _request.headers["x-forwarded-for"] || 
+    _request.connection.remoteAddress || 
+    _request.socket.remoteAddress;
+    // (_request.connection.socket ? _request.connection.socket.remoteAddress : null);
 
     this.gravitonDatabase.s3AssetModel.find({}).exec()
 
@@ -32,7 +30,7 @@ export function getS3Assets(this: Controller, _request: Request, response: Respo
                 }
 
                 // response.json(s3Assets);
-                response.json(_request.connection.remoteAddress);
+                response.json(ip);
             }
             else {
 
